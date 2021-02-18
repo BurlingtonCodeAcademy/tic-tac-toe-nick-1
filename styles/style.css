@@ -7,7 +7,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 #row-1 {
@@ -41,4 +40,9 @@ body {
     width: 40vw;
     height: 10vh;
     background-color: blue;
+    font-family: 'Long Cang', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8vh;
 }

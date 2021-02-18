@@ -8,15 +8,46 @@
 // let c7 = document.getElementById("cell-7");
 // let c8 = document.getElementById("cell-8");
 
-let cells = document.getElementsByClassName('cell')
+// let cells = document.getElementsByClassName('cell')
 
-for(cell of cells)
+// let allCells = cells.children;
 
 
+let start = document.getElementById('start')
 
-cells.addEventListener("click", draw);
+start.addEventListener("click", playX)
+let player1= true
+let game = true
 
-function draw(){
-    cell.textContent = "X"
-    
+function playX(){
+
+document.querySelectorAll(".cell").forEach (item => {
+    item.addEventListener("click", evt => {
+       item.textContent = "X"; 
+        playO()
+    })
+});
 }
+
+function playO(){
+    document.querySelectorAll(".cell").forEach (item => {
+        item.addEventListener("click", evt => {
+            item.textContent = "O";
+            playX();
+        })
+    })
+
+}
+// } if (player1 === false){
+//     document.querySelectorAll(".cell").forEach(item => {
+//         item.addEventListener("click", evt => {
+//             item.textContent = "O"
+//             player1 = true
+//         })
+//     })
+// } 
+
+    
+
+
+
