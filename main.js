@@ -16,15 +16,18 @@
 let start = document.getElementById('start')
 
 start.addEventListener("click", playX)
-let player1= true
-let game = true
+
+
+
+
 
 function playX(){
-
-document.querySelectorAll(".cell").forEach (item => {
+document.querySelectorAll(".cell").forEach (item =>  {
     item.addEventListener("click", evt => {
+        if (item.textContent === false) {
        item.textContent = "X"; 
         playO()
+        }
     })
 });
 }
@@ -38,14 +41,8 @@ function playO(){
     })
 
 }
-// } if (player1 === false){
-//     document.querySelectorAll(".cell").forEach(item => {
-//         item.addEventListener("click", evt => {
-//             item.textContent = "O"
-//             player1 = true
-//         })
-//     })
-// } 
+
+
 
     
 
