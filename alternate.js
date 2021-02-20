@@ -4,6 +4,7 @@ let O_Class = "O";
 let cellElements = document.querySelectorAll("[data-cell]");
 let start = document.getElementById("start");
 let prompt = document.getElementById("prompt");
+let cell = document.getElementsByClassName("cell")
 let winConditions = [
   [0, 1, 2],
   [3, 4, 5],
@@ -33,9 +34,13 @@ function startGame(){
   });
 }
 
+
 function handleClick(evt){
   let cell = evt.target;
   let currentClass = xTurn ? X_Class : O_Class
+  if(cell === false) { 
+    console.log("no")
+  } else {
   placeMark(cell, currentClass)
   //check for win
   if(checkWin(currentClass)){
@@ -45,15 +50,15 @@ function handleClick(evt){
   }
   //check for draw
   //switch turns
+  cell = false
   swapTurns()
+}
 }
 
 function placeMark(cell, currentClass){
-  if (){
-
-  } else {
   cell.textContent = currentClass
 }
+
 
 function swapTurns(){
   xTurn = !xTurn
@@ -82,6 +87,7 @@ function isDraw() {
   })
 }
 
+//function to disable the start button once clicked
 function disableButton(){
   document.getElementById("start").disabled = true;
 }
