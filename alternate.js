@@ -1,12 +1,12 @@
-
+// Global Variables
 let X_Class = "X";
 let O_Class = "O";
 let xTurn;
 let cellElements = document.querySelectorAll("[data-cell]");
 let start = document.getElementById("start");
 let prompt = document.getElementById("prompt");
-let turn = document.getElementById("turn")
-let cell = document.getElementsByClassName("cell")
+let turn = document.getElementById("turn");
+let cell = document.getElementsByClassName("cell");
 let winConditions = [
   [0, 1, 2],
   [3, 4, 5],
@@ -37,7 +37,7 @@ function handleClick(evt){
   let currentClass = xTurn ? X_Class : O_Class;
   //currentTurn needs to be opposite of currentClass to display correct turn.
   let currentTurn = xTurn ? O_Class : X_Class;
-  //applies whos turn it is to the turn <h4>
+  //applies who's turn it is to the turn <h4>
   turn.textContent = `${currentTurn} turn`
   //If cell is occupied the if statement prevents the turn from changing, cell being reassigned, and prompts user no
   if (cell.textContent === "X"||cell.textContent === "O"){
