@@ -2,11 +2,15 @@
 let X_Class = "X";
 let O_Class = "O";
 let xTurn;
+let timerInt;
+let timerIncrementor = 1000;
+let count = 0;
 let cellElements = document.querySelectorAll("[data-cell]");
 let start = document.getElementById("start");
 let prompt = document.getElementById("prompt");
-let turn = document.getElementById("turn");
 let cell = document.getElementsByClassName("cell");
+let turn = document.getElementById("turn");
+let time = document.getElementById("clock");
 let winConditions = [
   [0, 1, 2],
   [3, 4, 5],
@@ -17,6 +21,7 @@ let winConditions = [
   [0, 4, 8],
   [2, 4, 6]
 ]
+
 
 
 start.addEventListener("click", startGame)
@@ -44,22 +49,12 @@ function handleClick(evt){
       prompt.textContent = "No, please pick an empty spot"
   } else {
     prompt.textContent = " " //Reassigns the prompt to be empty after correct move is made
-
-function handleClick(evt){
-  let cell = evt.target;
-  let currentClass = xTurn ? X_Class : O_Class
-  if(cell === false) { 
-    console.log("no")
-  } else {
   placeMark(cell, currentClass)
   if(checkWin(currentClass)){
     gameOver(false)
   } else if (isDraw()) {
     gameOver(true)
   }
-  //check for draw
-  //switch turns
-  cell = false
   swapTurns()
 }
 function gameOver(draw){ //need draw function in the handleClick scope to use template string with currentClass var
@@ -67,17 +62,15 @@ function gameOver(draw){ //need draw function in the handleClick scope to use te
     prompt.textContent = "Its a Draw!!"
   } else {
     prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`;
+    clearInterval(timerInt);
   }
 }
 }    
-
 
 //draws X or O
 function placeMark(cell, currentClass){
   cell.textContent = currentClass
 }
-
-
 
 
 //changes between X and O
@@ -89,6 +82,7 @@ function swapTurns(){
 function checkWin(currentClass){
   return winConditions.some(combination => {
     return combination.every(index => {
+        console.log(combination)
       return cellElements[index].textContent === currentClass
     })
   })
@@ -107,17 +101,14 @@ function disableButton(){
   document.getElementById("start").disabled = true;
 }
 
-// timer function
-start.addEventListener("click", (evt) => {
-    let time = document.getElementById("clock");
-    time.textContent = parseInt(time.textContent);
-
-    setInterval(function () {                    
-      let counter = parseInt(time.textContent) + 1;
-      time.textContent = `${counter} seconds`  ;
-    },1000);
+//timer function
+start.addEventListener("click", () => {
+  timerInt = setInterval(countTimer, timerIncrementor);
 });
 
+let countTimer = () => {
+  start.disabled = true;
+  let newCount = parseInt(time.textContent) + (timerIncrementor/1000);
 
-
-
+  time.textContent = newCount;
+};
