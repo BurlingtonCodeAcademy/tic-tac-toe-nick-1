@@ -46,13 +46,17 @@ function handleClick(evt){
   //check for draw
   //switch turns
   swapTurns()
-}
+  }
+    
 
+
+//draws X or O
 function placeMark(cell, currentClass){
-  if (){
-
-  } else {
+  if (cell.textContent === true){
+    prompt.textContent = "no"
+} else {
   cell.textContent = currentClass
+}
 }
 
 function swapTurns(){
@@ -82,29 +86,32 @@ function isDraw() {
   })
 }
 
+// function isFull(full) {
+//   if (full) {
+//     prompt.textContent = "no"
+//   }
+// }
+
 function disableButton(){
   document.getElementById("start").disabled = true;
 }
 
-
+// timer function
 start.addEventListener("click",(evt) => {
     let time = document.getElementById("clock");
     time.textContent = parseInt(time.textContent);
 
     let intervalFunction = setInterval(function () {                    
       let counter = parseInt(time.textContent) + 1;
-      time.textContent = counter;
+      time.textContent = `${counter} seconds`  ;
     },1000);
   
  
-
-
-// stopTimer.addEventListener("click", (evt) => {
-//   clearInterval(intervalFunction);
-//   });
 });
 
-// function firstMove(evt) {
+// function fi// stopTimer.addEventListener("click", (evt) => {
+//   clearInterval(intervalFunction);
+//   });rstMove(evt) {
 //   let cell = evt.target;
 //   let currentClass = xTurn ? X_Class : O_Class;
 //   letMove(cell, currentClass);
@@ -118,3 +125,4 @@ start.addEventListener("click",(evt) => {
 // function switchTurns() {
 //   xTurn = !xTurn;
 // }
+
