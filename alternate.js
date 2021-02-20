@@ -6,6 +6,7 @@ let cellElements = document.querySelectorAll("[data-cell]");
 let start = document.getElementById("start");
 let prompt = document.getElementById("prompt");
 let turn = document.getElementById("turn")
+let cell = document.getElementsByClassName("cell")
 let winConditions = [
   [0, 1, 2],
   [3, 4, 5],
@@ -43,12 +44,22 @@ function handleClick(evt){
       prompt.textContent = "No, please pick an empty spot"
   } else {
     prompt.textContent = " " //Reassigns the prompt to be empty after correct move is made
+
+function handleClick(evt){
+  let cell = evt.target;
+  let currentClass = xTurn ? X_Class : O_Class
+  if(cell === false) { 
+    console.log("no")
+  } else {
   placeMark(cell, currentClass)
   if(checkWin(currentClass)){
     gameOver(false)
   } else if (isDraw()) {
     gameOver(true)
   }
+  //check for draw
+  //switch turns
+  cell = false
   swapTurns()
 }
 function gameOver(draw){ //need draw function in the handleClick scope to use template string with currentClass var
@@ -60,10 +71,13 @@ function gameOver(draw){ //need draw function in the handleClick scope to use te
 }
 }    
 
+
 //draws X or O
 function placeMark(cell, currentClass){
   cell.textContent = currentClass
 }
+
+
 
 
 //changes between X and O
