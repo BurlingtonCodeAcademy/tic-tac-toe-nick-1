@@ -1,6 +1,6 @@
 
-let X_Class = "x";
-let O_Class = "o";
+let X_Class = "X";
+let O_Class = "O";
 let cellElements = document.querySelectorAll("[data-cell]");
 let start = document.getElementById("start");
 let prompt = document.getElementById("prompt");
@@ -20,12 +20,12 @@ let winConditions = [
 let xTurn;
 
 
-start.addEventListener("click", disableButton, startGame())
+start.addEventListener("click", startGame)
 
-// startGame();
 
-function startGame() {
-  xTurn = false;
+function startGame(){
+  disableButton();
+  xTurn = true;
   cellElements.forEach((cell) => {
     cell.addEventListener("click", handleClick, {
       once: true,
@@ -39,7 +39,9 @@ function handleClick(evt){
   placeMark(cell, currentClass)
   //check for win
   if(checkWin(currentClass)){
-    prompt.textContent = "Winner! Winner!"
+    gameOver(false)
+  } else if (isDraw()) {
+    gameOver(true)
   }
   //check for draw
   //switch turns
@@ -47,6 +49,9 @@ function handleClick(evt){
 }
 
 function placeMark(cell, currentClass){
+  if (){
+
+  } else {
   cell.textContent = currentClass
 }
 
@@ -63,15 +68,24 @@ function checkWin(currentClass){
   })
 }
 
+function gameOver(draw){
+  if (draw){
+    prompt.textContent = "Its a Draw!!"
+  } else {
+    prompt.textContent = "Winner!! Winner!!";
+  }
+}
+
+function isDraw() {
+  return [...cellElements].every(cell =>{
+    return cell.textContent === X_Class || cell.textContent === O_Class
+  })
+}
+
 function disableButton(){
   document.getElementById("start").disabled = true;
 }
 
-
-
-// startGame();
-
-// let stopTimer = document.getElementById("stopTimer");
 
 start.addEventListener("click",(evt) => {
     let time = document.getElementById("clock");
