@@ -57,6 +57,7 @@ function gameOver(draw){ //need draw function in the handleClick scope to use te
     prompt.textContent = "Its a Draw!!"
   } else {
     prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`;
+    stopClick();
   }
 }
 }    
@@ -73,6 +74,7 @@ function swapTurns(){
 }
 
 //iterates through win condition list and compares the text elements of every cell to see if any combination matches.
+
 function checkWin(currentClass){
   return winConditions.some(combination => {
     return combination.every(index => {
@@ -92,6 +94,12 @@ function isDraw() {
 //disables the start button after being clicked
 function disableButton(){
   document.getElementById("start").disabled = true;
+}
+
+function stopClick(){
+  cellElements.forEach(cell => {
+    cell.removeEventListener("click", handleClick)
+  })
 }
 
 // timer function
