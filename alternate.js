@@ -60,10 +60,13 @@ function handleClick(evt){
 function gameOver(draw){ //need draw function in the handleClick scope to use template string with currentClass var
   if (draw){
     prompt.textContent = "Its a Draw!!"
+    clearInterval(timerInt);
+    turn.textContent = " "
   } else {
     prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`;
     stopClick();
     clearInterval(timerInt);
+    turn.textContent = " "
   }
 }
 }    
@@ -83,8 +86,7 @@ function swapTurns(){
 
 function checkWin(currentClass){
   return winConditions.some(combination => {
-    return combination.every(index => {
-        console.log(combination)
+    return combination.every(index => 
       return cellElements[index].textContent === currentClass
     })
   })
@@ -103,6 +105,7 @@ function disableButton(){
   document.getElementById("start").disabled = true;
 }
 
+//stops cells from being clickable after win
 function stopClick(){
   cellElements.forEach(cell => {
     cell.removeEventListener("click", handleClick)

@@ -1,6 +1,12 @@
 body {
     margin: 0%;
     text-align: center;
+    background-image: url(https://wallpaperaccess.com/full/2721511.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Long Cang', cursive;
+
 }
 
 /* main game board */
@@ -18,7 +24,7 @@ body {
 #row-1 {
     display: flex;
     width: 300px;
-    height: 100px;
+    height: 95px;
     /* border: 3px solid black; */
     align-items: center;
 
@@ -43,9 +49,9 @@ body {
 
 
 .cell {
-    border: 3px solid red;
+    border: 3px solid black;
     width: 100px;
-    height: 100px;
+    height: 95px;
     /* background-color: blue; */
     font-family: 'Long Cang', cursive;
     display: flex;
