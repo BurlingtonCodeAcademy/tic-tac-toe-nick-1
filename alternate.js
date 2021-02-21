@@ -1,12 +1,16 @@
-
+// Global Variables
 let X_Class = "X";
 let O_Class = "O";
 let xTurn;
+let timerInt;
+let timerIncrementor = 1000;
+let count = 0;
 let cellElements = document.querySelectorAll("[data-cell]");
 let start = document.getElementById("start");
 let prompt = document.getElementById("prompt");
 let cell = document.getElementsByClassName("cell");
-let turn = document.getElementById("turn")
+let turn = document.getElementById("turn");
+let time = document.getElementById("clock");
 let winConditions = [
   [0, 1, 2],
   [3, 4, 5],
@@ -17,6 +21,7 @@ let winConditions = [
   [0, 4, 8],
   [2, 4, 6]
 ]
+
 
 
 start.addEventListener("click", startGame)
@@ -37,7 +42,7 @@ function handleClick(evt){
   let currentClass = xTurn ? X_Class : O_Class;
   //currentTurn needs to be opposite of currentClass to display correct turn.
   let currentTurn = xTurn ? O_Class : X_Class;
-  //applies whos turn it is to the turn <h4>
+  //applies who's turn it is to the turn <h4>
   turn.textContent = `${currentTurn} turn`
   //If cell is occupied the if statement prevents the turn from changing, cell being reassigned, and prompts user no
   if (cell.textContent === "X"||cell.textContent === "O"){
@@ -58,6 +63,7 @@ function gameOver(draw){ //need draw function in the handleClick scope to use te
   } else {
     prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`;
     stopClick();
+    clearInterval(timerInt);
   }
 }
 }    
@@ -78,6 +84,7 @@ function swapTurns(){
 function checkWin(currentClass){
   return winConditions.some(combination => {
     return combination.every(index => {
+        console.log(combination)
       return cellElements[index].textContent === currentClass
     })
   })
@@ -102,15 +109,14 @@ function stopClick(){
   })
 }
 
-// timer function
-start.addEventListener("click", (evt) => {
-    let time = document.getElementById("clock");
-    time.textContent = parseInt(time.textContent);
-
-    setInterval(function () {                    
-      let counter = parseInt(time.textContent) + 1;
-      time.textContent = `${counter} seconds`  ;
-    },1000);
+//timer function
+start.addEventListener("click", () => {
+  timerInt = setInterval(countTimer, timerIncrementor);
 });
 
+let countTimer = () => {
+  start.disabled = true;
+  let newCount = parseInt(time.textContent) + (timerIncrementor/1000);
 
+  time.textContent = newCount;
+};
