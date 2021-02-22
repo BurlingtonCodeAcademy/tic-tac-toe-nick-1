@@ -1,5 +1,14 @@
+html{
+    background-image: url(https://thumbs.dreamstime.com/b/antique-school-desk-abstract-image-top-wooden-118352521.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 body {
   margin: 0%;
+  margin-top: 25vh;
   text-align: center;
   background-image: url(https://wallpaperaccess.com/full/2721511.jpg);
   background-size: contain;
