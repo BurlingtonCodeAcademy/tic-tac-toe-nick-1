@@ -160,9 +160,10 @@ function compTurn() {
 			turn.textContent = ' ';
 		} else {
 			prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`;
-			stopPlayClick();
 			clearInterval(timerInt);
 			turn.textContent = ' ';
+      stopPlayClick();
+      exit()
 		}
 	}
 }
