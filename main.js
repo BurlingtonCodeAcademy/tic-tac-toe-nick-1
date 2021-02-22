@@ -107,10 +107,11 @@ function playerClick(evt) {
 			gameOver(false);
 		} else if (isDraw()) {
 			gameOver(true);
-		}
-		turn.textContent = "O's Turn!";
-		stopPlayClick();
-		compTurn();
+		} 
+    turn.textContent = "O's Turn!";
+      stopPlayClick();
+      compTurn();
+	
 
 
 
@@ -122,13 +123,14 @@ function playerClick(evt) {
 				clearInterval(timerInt);
 				turn.textContent = ' ';
 			} else {
-        stopPlayClick();
 				prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`
 				clearInterval(timerInt);
 				turn.textContent = ' ';
-			}
+        stopPlayClick()
+        exit()
 		}
 	}
+}
 }
 
 //--------computer turn------------//
