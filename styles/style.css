@@ -1,0 +1,66 @@
+html{
+    background-image: url(https://thumbs.dreamstime.com/b/antique-school-desk-abstract-image-top-wooden-118352521.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+body {
+  margin: 0%;
+  margin-top: 25vh;
+  text-align: center;
+  background-image: url(https://wallpaperaccess.com/full/2721511.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: "Long Cang", cursive;
+}
+
+/* main game board */
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#start {
+  margin-top: 50px;
+}
+
+#row-1 {
+  display: flex;
+  width: 300px;
+  height: 95px;
+  /* border: 3px solid black; */
+  align-items: center;
+}
+
+#row-2 {
+  display: flex;
+  width: 300px;
+  height: 100px;
+  /* border: 3px solid black; */
+  align-items: center;
+}
+
+#row-3 {
+  display: flex;
+  width: 300px;
+  height: 100px;
+  /* border: 3px solid black; */
+  align-items: center;
+}
+
+.cell {
+  border: 3px solid black;
+  width: 100px;
+  height: 95px;
+  /* background-color: blue; */
+  font-family: "Long Cang", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8vh;
+}
