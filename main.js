@@ -114,7 +114,7 @@ function playerClick(evt) {
 
 
 
-    
+
 		function gameOver(draw) {
 			//need draw function in the handleClick scope to use template string with currentClass var
 			if (draw) {
@@ -182,7 +182,6 @@ function swapTurns() {
 }
 
 //iterates through win condition list and compares the text elements of every cell to see if any combination matches.
-
 function checkWin(currentClass) {
 	return winConditions.some((combination) => {
 		console.log(combination);
@@ -206,6 +205,7 @@ function stopClick() {
 	});
 }
 
+//stops player click during comp turn
 function stopPlayClick() {
 	cellElements.forEach((cell) => {
 		cell.removeEventListener('click', playerClick);
