@@ -93,7 +93,6 @@ function handleClick(evt) {
 
 //----------P vs C Game ----------------------------//
 
-
 //-----------player turn-----//
 function playerClick(evt) {
 	let cell = evt.target;
@@ -107,14 +106,10 @@ function playerClick(evt) {
 			gameOver(false);
 		} else if (isDraw()) {
 			gameOver(true);
-		} 
-    turn.textContent = "O's Turn!";
-      stopPlayClick();
-      compTurn();
-	
-
-
-
+		}
+		turn.textContent = "O's Turn!";
+		stopPlayClick();
+		compTurn();
 
 		function gameOver(draw) {
 			//need draw function in the handleClick scope to use template string with currentClass var
@@ -123,14 +118,14 @@ function playerClick(evt) {
 				clearInterval(timerInt);
 				turn.textContent = ' ';
 			} else {
-				prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`
+				prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`;
 				clearInterval(timerInt);
 				turn.textContent = ' ';
-        stopPlayClick()
-        exit()
+				stopPlayClick();
+				exit();
+			}
 		}
 	}
-}
 }
 
 //--------computer turn------------//
@@ -149,28 +144,27 @@ function compTurn() {
 		}
 	}, 1000);
 
-
-function compWinCheck() {
-	if (checkWin(currentClass)) {
-		gameOver(false);
-	} else if (isDraw()) {
-		gameOver(true);
+	function compWinCheck() {
+		if (checkWin(currentClass)) {
+			gameOver(false);
+		} else if (isDraw()) {
+			gameOver(true);
+		}
 	}
-}
 
-function gameOver(draw) {
-	//need draw function in the handleClick scope to use template string with currentClass var
-	if (draw) {
-		prompt.textContent = 'Its a Draw!!';
-		clearInterval(timerInt);
-		turn.textContent = ' ';
-	} else {
-		prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`;
-		stopPlayClick();
-		clearInterval(timerInt);
-		turn.textContent = ' ';
+	function gameOver(draw) {
+		//need draw function in the handleClick scope to use template string with currentClass var
+		if (draw) {
+			prompt.textContent = 'Its a Draw!!';
+			clearInterval(timerInt);
+			turn.textContent = ' ';
+		} else {
+			prompt.textContent = `Congratulations ${currentClass} you are the Winner!!`;
+			stopPlayClick();
+			clearInterval(timerInt);
+			turn.textContent = ' ';
+		}
 	}
-}
 }
 
 //draws X or O
